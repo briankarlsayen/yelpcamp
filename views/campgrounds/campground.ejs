@@ -1,0 +1,29 @@
+<%- include ('../partials/header') %>
+
+
+<div class= "container">
+    <header class="jumbotron">
+        <h1>Campgrounds list</h1>
+        <p>Best of the Philippine campgrounds</p>
+        <p>
+            <a class = "btn btn-primary btn-lg" href="/campgrounds/new">Add new Campground</a>
+        </p>
+    </header>
+
+    <div class= "row text-center" style="display:flex; flex-wrap: wrap;" >
+        <% campgrounds.forEach(function(campground){ %>
+            <div class= "col-xl-3 col-lg-4  col-sm-6">
+                <div class="thumbnail">
+                    <img src="<%= campground.image %>" width="250" height="180" %> >
+                    <div class="caption text">
+                        <p><%= campground.name %></p>
+                     </div>
+                     <p>
+                        <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More info</a>
+                    </p>
+                </div>
+             </div>
+        <% }); %>
+    </div>
+</div>
+<%- include ('../partials/footer') %>
