@@ -34,10 +34,15 @@ router.get("/login", function(req, res){
 });
 router.post("/login", passport.authenticate("local",
     {
-        successRedirect: "/campgrounds",
-        failureRedirect: "/login"
-    }), function(req, res){
-});
+        failureRedirect: "/login",
+        failureFlash: true,
+    }), function(req, res) {
+        // You can also use a flash to consume after redirect:
+        // (provided that you use connect-flash in your app)
+        req.flash('success', 'Welcome ' + req.body.username);
+        res.redirect('/campgrounds');
+    }
+);
 
 //logout route
 router.get("/logout", function(req, res){

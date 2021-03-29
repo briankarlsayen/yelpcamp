@@ -20,9 +20,10 @@ mongoose.set('useUnifiedTopology', true);
 mongoose.set('useNewUrlParser', true);
 
 //connect to database
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp_v13";
+mongoose.connect(url);
 //mongoose.connect("mongodb://localhost:27017/yelp_camp_v12");
-mongoose.connect("mongodb+srv://blu3fire89:0089@cluster0.eygh2.mongodb.net/<dbname>?retryWrites=true&w=majority");
-//mongodb+srv://blu3fire89:0089@cluster0.eygh2.mongodb.net/<dbname>?retryWrites=true&w=majority
+//mongoose.connect("mongodb+srv://blu3fire89:0089@cluster0.eygh2.mongodb.net/<dbname>?retryWrites=true&w=majority");
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -45,6 +46,7 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
 
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
