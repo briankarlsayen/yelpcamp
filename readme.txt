@@ -10,6 +10,7 @@ This project was created using Node.js, Express, MongoDB, and Bootstrap. Passpor
 npm install https://github.com/briankarlsayen/yelpcamp.git
 ```
 3. Create mongoDB
+https://www.mongodb.com/
 inside collections create a Database
 4. Add environment variables
 add new file name .env
@@ -22,4 +23,3 @@ note: replace <> files with your own.
 ```
 npm run start
 ```
-    
